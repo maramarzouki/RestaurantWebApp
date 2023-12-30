@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create Article</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<form #f="ngForm" (ngSubmit)="createArticle(f)" enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="mb-3">
+            <label for="articleTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="articleTitle" placeholder="Title" name="title" #title="ngModel"
+                [(ngModel)]="article.title">
+        </div>
+        <div class="mb-3">
+            <label for="articleDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="articleDescription" rows="3" name="description" #description="ngModel"
+                [(ngModel)]="article.description"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" placeholder="Article image" 
+                name="image" (change)="onFileSelected($event)" accept=".SVG, .PNG, .JPG , .GIF">
+        </div>
+        <div class="mb-3">
+            <label for="articlePrice" class="form-label">Price</label>
+            <input type="number" class="form-control" id="articlePrice" placeholder="Price" name="price"
+                #price="ngModel" [(ngModel)]="article.price">
+        </div>
+        <label for="browser" class="form-label">Category:</label>
+        <select class="form-select" name="category" #category="ngModel" [(ngModel)]="article.category">
+            <option>Pizza</option>
+            <option>Sweets</option>
+            <option>Drinks</option>
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Create Article</button>
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+</form>

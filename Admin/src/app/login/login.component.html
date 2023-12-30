@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h2>Login</h2>
+  <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" #email="ngModel"
+        [(ngModel)]="admin.email" required email>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+      </div>
+    </div> 
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+        #password="ngModel" [(ngModel)]="admin.password" required>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <div *ngIf="showLoginError" class="alert alert-danger mt-3" role="alert">
+    {{errorToShow}}
+  </div>
+  <div *ngIf="fieldsError" class="alert alert-danger mt-3" role="alert">
+    All fields are required!
+  </div>
+</div>

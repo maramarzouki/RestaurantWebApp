@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container mt-3">
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button class="btn btn-primary float-md-end" (click)="openAddArticleModal()">Add new article</button>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let article of articles">
+            <div class="card mb-4">
+                <img src="{{article.image}}" alt="MongoDB Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{article.title}}</h5>
+                    <p class="card-text">{{article.description}}</p>
+                    <button href="#" class="btn btn-primary">Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
