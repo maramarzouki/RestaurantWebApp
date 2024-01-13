@@ -26,7 +26,7 @@ export class ArticleDetailsComponent {
   ) { 
     this.authenticated = this.authService.isAuthenticated()
   }
-
+ 
   openLoginModal(){
     console.log(this.authenticated);
     

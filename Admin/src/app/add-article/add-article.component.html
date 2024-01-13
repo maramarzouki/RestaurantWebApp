@@ -7,20 +7,29 @@
         <div class="mb-3">
             <label for="articleTitle" class="form-label">Title</label>
             <input type="text" class="form-control" id="articleTitle" placeholder="Title" name="title" #title="ngModel"
-                [(ngModel)]="article.title">
+                [(ngModel)]="article.title" required>
+            <div *ngIf="f.submitted && title.invalid" class="text-danger">
+                Title is required.
+            </div>
         </div>
         <div class="mb-3">
             <label for="articleDescription" class="form-label">Description</label>
             <textarea class="form-control" id="articleDescription" rows="3" name="description" #description="ngModel"
-                [(ngModel)]="article.description"></textarea>
+                [(ngModel)]="article.description" required></textarea>
+            <div *ngIf="f.submitted && description.invalid" class="text-danger">
+                Description is required.
+            </div>
         </div>
         <div class="mb-3">
             <label for="articlePrice" class="form-label">Price</label>
             <input type="number" class="form-control" id="articlePrice" placeholder="Price" name="price"
-                #price="ngModel" [(ngModel)]="article.price">
+                #price="ngModel" [(ngModel)]="article.price" required>
+            <div *ngIf="f.submitted && price.invalid" class="text-danger">
+                Price is required.
+            </div>
         </div>
         <label for="browser" class="form-label">Category:</label>
-        <select class="form-select mb-3" name="category" #category="ngModel" [(ngModel)]="article.category">
+        <select class="form-select mb-3" name="category" #category="ngModel" [(ngModel)]="article.category" required>
             <option>Pizza</option>
             <option>Sweets</option>
             <option>Drinks</option>
@@ -35,12 +44,15 @@
             <label class="btn btn-outline-primary">
                 Upload an image
                 <input type="file" class="account-settings-fileinput" placeholder="Article image" name="file"
-                    (change)="onFileSelected($event)" accept=".SVG, .PNG, .JPG , .GIF, .JPEG">
+                    (change)="onFileSelected($event)" accept=".SVG, .PNG, .JPG , .GIF, .JPEG" required>
             </label>
+            <div *ngIf="f.submitted && !f.controls['file'].valid" class="text-danger">
+                Please select a valid image file.
+            </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Create Article</button>
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create Article</button>
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
 </form>
