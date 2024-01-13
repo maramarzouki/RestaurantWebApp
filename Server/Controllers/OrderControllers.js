@@ -1,16 +1,17 @@
 const Order = require('../Models/Order')
 
 exports.createOrder = async (req, res) => {
-    const { articleID, quantity, customerID } = req.body;
+    const { articleID, title, quantity, address, customerID } = req.body;
 
     try {
-        await Order.create({ articleID, quantity, customerID })
+        await Order.create({ title, quantity, address, articleID, customerID })
             .then((response) => {
                 res.send(response);
             })
 
     } catch (error) {
         res.status(500).send({ ERROR: error.message });
+        console.log(error.message);
     }
 }
 
@@ -30,7 +31,20 @@ exports.getOrderDetails = async (req, res) => {
 exports.getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find({ customerID: req.params.customerID });
-        if (orders.length>0) {
+        if (orders.length > 0) {
+            res.status(200).send({ Orders: orders })
+        } else {
+            res.status(204).send("No order found!")
+        }
+    } catch (error) {
+        res.status(500).send({ ERROR: error.message });
+    }
+}
+
+exports.getAllOrders = async (req, res) => {
+    try {
+        const orders = await Order.find({});
+        if (orders.length > 0) {
             res.status(200).send({ Orders: orders })
         } else {
             res.status(204).send("No order found!")

@@ -1,0 +1,19 @@
+<div *ngIf="authenticated; else notAuthenticated">
+    <app-unauth-navbar></app-unauth-navbar>
+</div>
+<ng-template #notAuthenticated>
+    <app-navbar></app-navbar>
+</ng-template>
+<div class="articles-container">
+    <div class="row">
+        <mat-card *ngFor="let article of articles" class="article col-md-3">
+            <img [src]="getImageUrl(article.image)" alt="{{ article.title }}" class="article-image">
+            <mat-card-content class="article-details">
+                <h2 style="text-align: center;">{{ article.title }}</h2>
+                <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ article.description }}</p>
+                <p class="article-price">{{ article.price | currency }}</p>
+                <button class="btn btn-primary float-md-end" (click)="goToArticleDetails(article._id)">Check details</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -8,10 +8,10 @@ const create_token = (_id) => {
 }
 
 exports.addAdmin = async (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password, phoneNumber } = req.body;
 
     try {
-        const newAdmin = await Admin.create_account(firstname, lastname, email, password);
+        const newAdmin = await Admin.create_account(firstname, lastname, email, password, phoneNumber);
         const token = create_token(newAdmin._id);
         res.status(201).send({ Token: token, NewAdmin: newAdmin });
     } catch (err) {
@@ -37,9 +37,22 @@ exports.get_admin_info = async (req, res) => {
     try {
         const admin = await Admin.findById({ _id: req.params.adminID });
         if (admin) {
-            res.status(200).send({ Admin: admin })
+            res.status(200).send(admin)
         } else {
             res.status(404).send("Admin not found!");
+        }
+    } catch (error) {
+        res.status(500).send({ ERROR: error.message });
+    }
+}
+
+exports.get_all_admins = async (req, res) => {
+    try {
+        const admin = await Admin.find({});
+        if (admin) {
+            res.status(200).send(admin)
+        } else {
+            res.status(204).send("Admin not found!");
         }
     } catch (error) {
         res.status(500).send({ ERROR: error.message });

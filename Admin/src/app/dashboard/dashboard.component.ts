@@ -1,9 +1,10 @@
 import { Component, Sanitizer, inject } from '@angular/core';
 import { Article } from '../model/Article';
-import { AdminService } from '../service/admin.service';
+import { ArticleService } from '../service/ArticleService/article.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddArticleComponent } from '../add-article/add-article.component';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,8 +18,8 @@ export class DashboardComponent {
 
 
   constructor(
-    private service: AdminService,
-    private sanitizer: DomSanitizer
+    private service: ArticleService, 
+    private router: Router
   ) { }
 
   openAddArticleModal() {
@@ -26,10 +27,20 @@ export class DashboardComponent {
 		// modalRef.componentInstance.name = 'World';
 	}
 
-  // displayImage(image: any): string {
-  //     const base64String = btoa(String.fromCharCode(...new Uint8Array(image.data)));
-  //     return `data:${image.contentType};base64,${base64String}`;
-  // }
+  getImageUrl(image: string): string {
+    const imageSrc = image.split('\\').pop();
+    return `http://127.0.0.1:8080/${imageSrc}`
+  }
+
+  goToArticleDetails = (articleID:number) => {
+    this.service.getArticleById(articleID).subscribe(
+      article => {
+        this.router.navigate([`articleDetails/${articleID}`])
+        console.log(article);
+        
+      }
+    )
+  }
 
   ngOnInit(): void {
     this.service.getAllArticles().subscribe(

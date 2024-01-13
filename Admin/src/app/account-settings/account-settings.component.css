@@ -1,0 +1,13 @@
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.active-link {
+    background-color: #b21e35;
+    color: white !important;
+}
+

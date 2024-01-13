@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div class="container d-flex justify-content-center mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <img [src]="getImageUrl(article.image)" class="img-fluid rounded" alt="MongoDB Image"
+                style="width: 100%;">
+        </div>
+        <div class="col-md-3 ml-5">
+            <p>Description: {{article.description}}</p>
+            <p>Price: {{article.price}}</p>
+            <p>Category: {{article.category}}</p>
+            <button type="button" class="btn btn-warning" (click)="openLoginModal()">Order</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div *ngIf="authenticated; else notAuthenticated">
+    <app-unauth-navbar></app-unauth-navbar>
+</div>
+<ng-template #notAuthenticated>
+    <app-navbar></app-navbar>
+</ng-template>
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://www.southernliving.com/thmb/y2_3ac5J0UDJ1LHOK9K4GCDaVSw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Delbar_PhotosbyAndrewThomasLee-853567ef56de496c9be59ec16facc5c6.jpg"
+                class="d-block w-100" style="width: 100%; height: 600px; filter: brightness(50%);" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://www.marthastewart.com/thmb/3jcvhpkydxP94H_vRXWoIep-De4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSL-313705-classic-cheesecake-hero-horiz-0723-e3906c2723d94cbd8e3f582ac1040ea0.jpg"
+                class="d-block w-100" style="width: 100%; height: 600px; filter: brightness(50%)" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://www.luxurylifestylemag.co.uk/wp-content/uploads/2020/11/bar_restaurants_LaSponda_1michelin-star-positano_03-new.jpg"
+                class="d-block w-100" style="width: 100%; height: 600px; filter: brightness(50%)" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="container mt-5" style="background-color: #f0f0f0; padding: 20px; width: 100;">
+    <h2 class="text-center">About Us</h2>
+    <p>
+        Welcome to Table.com, where culinary excellence meets a warm and inviting atmosphere. Our journey began with a
+        passion for delivering exceptional dining experiences, and it has evolved into a celebration of flavors,
+        innovation, and hospitality.
+    </p>
+    <p>
+        At Table.com, we take pride in sourcing the finest, locally-sourced ingredients to create dishes that tantalize
+        your taste buds. Our chefs, with their artistry and dedication, craft each plate to perfection, ensuring a
+        symphony of flavors that reflects our commitment to culinary excellence.
+    </p>
+    <p>
+        Beyond the exquisite cuisine, our restaurant is a place of gathering, where friends and family come together to
+        share memorable moments. The cozy ambiance, coupled with attentive service, creates an environment where every
+        visit is a celebration.
+    </p>
+    <p>
+        Whether you are a connoisseur seeking bold, innovative dishes or someone looking for comfort food with a modern
+        twist, Table.com has something to offer for every palate. Join us on a culinary journey that transcends the
+        ordinary, and let us redefine your expectations of dining.
+    </p>
+    <p>
+        Thank you for choosing Table.com. We look forward to serving you and making your dining experience truly
+        exceptional.
+    </p>
+</div>
+<div class="container" style="padding: 20px; width: 100%; margin: 2;">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/dsc01939-1638289406.jpg" alt="Image description"
+                style="width: 100%; height: 100%;" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+            <h2 class="text-center">Our History</h2>
+            <p>
+                In 2009, our culinary journey began with a dream and a commitment to redefine dining experiences.
+                Founded by Chef Gabrielle Laurent, Table.com started as a small bistro, drawing inspiration from both
+                classical French techniques and global flavors.
+            </p>
+            <p>
+                As the years unfolded, Table.com transformed into a culinary haven, earning accolades for its innovative
+                approach. In 2017, the restaurant received its first Michelin star, a testament to Chef Laurent's
+                dedication to pushing culinary boundaries.
+            </p>
+            <p>
+                The following decade marked a period of expansion and evolution. Chef Laurent's protégé, Chef Alex
+                Reynolds, infused modern techniques while preserving the restaurant's core values. This era saw the
+                introduction of signature dishes and a commitment to sustainable sourcing.
+            </p>
+            <p>
+                Today, Table.com stands as a beacon of gastronomic excellence. Our history is a tapestry of passion,
+                creativity, and a relentless pursuit of culinary perfection. Join us as we continue to craft memorable
+                dining experiences and embark on a journey that celebrates the artistry of food.
+            </p>
+        </div>
+    </div>
+</div>

@@ -32,6 +32,14 @@ export class Admin {
         this.password = value;
     }
 
+    get phoneNumber () : number {
+        return this.phoneNumber;
+    }
+
+    set phoneNumber (value: number) {
+        this.phoneNumber = value;
+    }
+
     get Token () : string {
         return this.Token;
     }
@@ -45,6 +53,7 @@ export class Admin {
         private _lastname: string,
         private _email: string,
         private _password: string,
+        private _phoneNumber: number,
         private _token: string
     ){}
 }

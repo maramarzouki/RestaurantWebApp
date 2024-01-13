@@ -5,9 +5,14 @@ const article_schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // image: {
+    //     // data: Buffer,
+    //     data: String,
+    //     contentType: String,
+    // },
     image: {
-        data: Buffer,
-        contentType: String,
+        type: String,
+        required: true
     },
     description: {
         type: String,

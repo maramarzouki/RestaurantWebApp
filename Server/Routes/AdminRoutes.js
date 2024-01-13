@@ -6,6 +6,7 @@ const router = Router();
 router.post('/addAdmin', Admin.addAdmin);
 router.post('/loginAdmin', Admin.login_admin);
 router.get('/getAdminDetails/:adminID', Admin.get_admin_info);
+router.get('/getAllAdmins', Admin.get_all_admins)
 router.put('/updateAdmin/:adminID', Admin.update_admin);
 router.delete('/deleteAdmin/:adminID', Admin.delete_admin);
 

@@ -7,59 +7,63 @@ var validate_email = (email) => {
 };
 
 const admin_schema = new mongoose.Schema({
-    firstname:{
+    firstname: {
         type: String,
         required: true
     },
-    lastname:{
+    lastname: {
         type: String,
         required: true
     },
-    email:{
-        type:String,
-        required:true,
-        validate:[validate_email,"Invalid Email!"],
-        unique:true
+    email: {
+        type: String,
+        required: true,
+        validate: [validate_email, "Invalid Email!"],
+        unique: true
     },
-    password:{
-        type:String,
-        required:true,
-        minLength:8
+    password: {
+        type: String,
+        required: true,
+        minLength: 8
+    },
+    phoneNumber: {
+        type: Number,
+        required: true
     }
 })
 
-admin_schema.statics.create_account = async function (firstname,lastname,email,password) {
-    const exists = await this.findOne({email});
-    if(exists){
+admin_schema.statics.create_account = async function (firstname, lastname, email, password, phoneNumber) {
+    const exists = await this.findOne({ email });
+    if (exists) {
         throw Error('Email already exists!');
     }
 
     const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password,salt);
+    const hash = await bcrypt.hash(password, salt);
 
     console.log(password)
-    const admin = this.create({firstname,lastname,email,password:hash});
+    const admin = this.create({ firstname, lastname, email, password: hash, phoneNumber });
     console.log(admin);
     return admin;
-} 
+}
 
-admin_schema.statics.login = async function (email,password) {
-    const admin = await this.findOne({email});
-    if(!email || !password){
+admin_schema.statics.login = async function (email, password) {
+    const admin = await this.findOne({ email });
+    if (!email || !password) {
         throw Error('All fields are required');
     }
 
-    if(!admin){
+    if (!admin) {
         throw Error("Admin doesn't exist!")
     }
 
-    const match = await bcrypt.compare(password,admin.password);
-    if(!match){
+    const match = await bcrypt.compare(password, admin.password);
+    if (!match) {
         throw Error('Password is not correct!')
     }
 
     return admin;
 }
 
-const AdminModel = mongoose.model('Admins',admin_schema);
+const AdminModel = mongoose.model('Admins', admin_schema);
 module.exports = AdminModel;

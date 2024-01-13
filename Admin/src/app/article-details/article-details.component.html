@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container mt-3 mb-5">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-md-6">
+            <h1>{{ article.title }}</h1>
+          </div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <button type="button" class="btn btn-primary mr-5" (click)="openUpdateArticleModal()"><i class="bi bi-pencil"></i></button>
+            <button type="button" class="btn btn-danger" (click)="openDeleteArticleModal()" ><i class="bi bi-trash"></i></button>
+          </div>
+        </div>
+      </div>
+
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <img [src]="getImageUrl(article.image)" class="img-fluid rounded" alt="MongoDB Image"
+                    style="width: 100%;">
+            </div>
+            <div class="col-md-3 ml-5">
+                <p>Description: {{article.description}}</p>
+                <p>Price: {{article.price}}</p>
+                <p>Category: {{article.category}}</p>
+            </div>
+        </div>
+    </div>
+</div>

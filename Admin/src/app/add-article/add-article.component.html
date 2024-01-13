@@ -14,21 +14,30 @@
             <textarea class="form-control" id="articleDescription" rows="3" name="description" #description="ngModel"
                 [(ngModel)]="article.description"></textarea>
         </div>
-        <div class="input-group mb-3">
-            <input type="file" class="form-control" placeholder="Article image" 
-                name="image" (change)="onFileSelected($event)" accept=".SVG, .PNG, .JPG , .GIF">
-        </div>
         <div class="mb-3">
             <label for="articlePrice" class="form-label">Price</label>
             <input type="number" class="form-control" id="articlePrice" placeholder="Price" name="price"
                 #price="ngModel" [(ngModel)]="article.price">
         </div>
         <label for="browser" class="form-label">Category:</label>
-        <select class="form-select" name="category" #category="ngModel" [(ngModel)]="article.category">
+        <select class="form-select mb-3" name="category" #category="ngModel" [(ngModel)]="article.category">
             <option>Pizza</option>
             <option>Sweets</option>
             <option>Drinks</option>
+            <option>Pasta</option>
+            <option>Sandwiches</option>
+            <option>Burgers</option>
+            <option>Tacos</option>
+            <option>Chicken</option>
+            <option>Salads</option>
         </select>
+        <div class="input-group mb-3">
+            <label class="btn btn-outline-primary">
+                Upload an image
+                <input type="file" class="account-settings-fileinput" placeholder="Article image" name="file"
+                    (change)="onFileSelected($event)" accept=".SVG, .PNG, .JPG , .GIF, .JPEG">
+            </label>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Create Article</button>

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminService } from '../service/admin.service';
+import { ArticleService } from '../service/ArticleService/article.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -19,7 +19,7 @@ export class AddArticleComponent {
 
 
   constructor(
-    private service: AdminService
+    private service: ArticleService
   ) { }
 
   onFileSelected(event: any) {
@@ -27,10 +27,6 @@ export class AddArticleComponent {
   }
 
   createArticle = (f: NgForm) => {
-
-
-
-
     const newArticle = {
       title: f.value.title,
       description: f.value.description,
@@ -43,7 +39,10 @@ export class AddArticleComponent {
     console.log(newArticle);
 
     this.service.addArticle(newArticle).subscribe(
-      res => alert('Article created successfully!')
+      res => {
+        this.activeModal.close();
+        window.location.reload();
+      }
     );
   };
 

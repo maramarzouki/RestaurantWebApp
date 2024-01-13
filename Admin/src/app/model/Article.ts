@@ -1,5 +1,13 @@
 export class Article {
 
+    get _id(): number {
+        return this._id;
+    }
+
+    set _id(value: number) {
+        this._id = value;
+    }
+
     get title(): string {
         return this.title;
     }
@@ -8,11 +16,11 @@ export class Article {
         this.title = value;
     }
 
-    get image(): { data: string, contentType: string } {
+    get image(): string {
         return this.image;
       }
     
-      set image(value: { data: string, contentType: string }) {
+      set image(value: string) {
         this.image = value;
       }
 
@@ -24,11 +32,11 @@ export class Article {
         this.description = value;
     }
 
-    get price(): string {
+    get price(): number {
         return this.price;
     }
 
-    set price(value: string) {
+    set price(value: number) {
         this.price = value;
     }
 
@@ -49,9 +57,10 @@ export class Article {
     }
 
     constructor(
+        private __id: number, 
         private _title: string,
         // private _image: { data: string, contentType: string },
-        private _image: { data: string, contentType: string },
+        private _image: string,
         private _description: string,
         private _price: number,
         private _category: string,

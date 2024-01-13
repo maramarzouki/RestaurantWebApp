@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title">Make Order</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<form #f="ngForm" (ngSubmit)="makeOrder(f)">
+    <div class="modal-body">
+        <div class="mb-3 row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="title" [value]="titleValue" 
+                name="title" #title="ngModel"
+                [(ngModel)]="order.title">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="quantity"
+                name="quantity" #quantity="ngModel"
+                [(ngModel)]="order.quantity">
+
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="address" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address"
+                name="address" #address="ngModel"
+                [(ngModel)]="order.address">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Order</button>
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+</form>
